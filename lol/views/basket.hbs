@@ -1,0 +1,15 @@
+<main>
+  <h1>{{client.name}}</h1>
+  <p>{{client.adress}}</p>
+  <p>{{client.comments}}</p>
+</main>
+
+
+<body>
+  <h2>Заказы клиента</h2>
+  {{#each orderClient}}
+<p>{{this.orderNumber}}</p>
+<p>{{this.type}}</p>
+<p>{{this.price}}</p>
+  {{/each}}
+</body>
