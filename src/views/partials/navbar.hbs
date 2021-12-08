@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9dc9f8;">
+
+
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <form class="d-flex justify-content-end">
+        <ul class="navbar-nav">
+          {{#if userName}}
+          <li class="nav-item">
+            <p class="nav-link">Привет, {{userName}}</p>
+          </li>
+          {{/if}}
+          {{#if isAdmin}}
+          <li class="nav-item">
+            <p class="nav-link"><a class="nav-link" href="/admin">Кабинет админа</a></p>
+          </li>
+          {{/if}}
+
+
+        </ul>
+      </form>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+</nav>

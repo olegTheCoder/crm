@@ -1,0 +1,63 @@
+{
+  "name": "crm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+<<<<<<< HEAD
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olegTheCoder/crm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olegTheCoder/crm/issues"
+  },
+  "homepage": "https://github.com/olegTheCoder/crm#readme",
+  "dependencies": {
+    "create-gitignore": "^0.1.0",
+    "express": "^4.17.1",
+    "express-cli": "^0.0.1",
+    "hbs": "^4.2.0",
+    "path": "^0.12.7",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.12.0-beta.1",
+    "sequelize-cli": "^6.3.0"
+=======
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.9.0",
+    "session": "^0.1.0",
+    "session-file-store": "^1.5.0"
+>>>>>>> origin/dev
+  },
+  "devDependencies": {
+    "eslint": "^8.4.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+<<<<<<< HEAD
+    "eslint-plugin-import": "^2.25.3"
+=======
+    "eslint-plugin-import": "^2.25.3",
+    "morgan": "^1.10.0",
+    "sequelize-cli": "^6.3.0"
+>>>>>>> origin/dev
+  }
+}
