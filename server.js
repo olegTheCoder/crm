@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
@@ -12,7 +13,6 @@ const usersRouter = require('./src/routes/users');
 const clientsRouter = require('./src/routes/clients');
 // const orderRouter = require('./src/routes/orderRouter');
 
-
 const PORT = process.env.PORT ?? 3000;
 
 const sessionConfig = {
@@ -22,7 +22,11 @@ const sessionConfig = {
   resave: false,
   saveUninitialized: false,
   httpOnly: true,
-  cookie: { expires: 24 * 60 * 60e3 },
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    expires: 24 * 60 * 60e3,
+  },
 };
 
 const sessionParser = session(sessionConfig);
@@ -31,12 +35,11 @@ app.set('views', path.join(process.env.PWD, 'src', 'views'));
 hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
 
 // Hepler для скрытия кнопок изменения/удаления у разных пользователей
-hbs.registerHelper('if_eq', function(a, b, opts) {
-  if (a == b) {
-      return opts.fn(this);
-  } else {
-      return opts.inverse(this);
+hbs.registerHelper('if_eq', function (a, b, opts) {
+  if (a === b) {
+    return opts.fn(this);
   }
+  return opts.inverse(this);
 });
 // -------------------------------------------------------------------
 
@@ -64,7 +67,7 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   const appMode = req.app.get('env');
   let error;
 
