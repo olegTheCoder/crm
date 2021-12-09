@@ -5,7 +5,7 @@ logForm.addEventListener('submit', async (e) => {
   e.preventDefault()
   const inputs = Object.fromEntries(new FormData(logForm));
 
-  const response = await fetch('/user', {
+  const response = await fetch('/users', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -14,7 +14,7 @@ logForm.addEventListener('submit', async (e) => {
   })
 
   if (response.ok) {
-    window.location = '/client'
+    window.location = '/clients'
   } else {
     document.getElementById('error').innerHTML = `<p style="color:red;">
     <b>Не подходят учётные данные или у вас пустые поля.</b></p>`

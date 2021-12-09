@@ -1,16 +1,36 @@
 <script defer src="/js/login.js"></script>
 
+{{!-- <div class="my-5">
+  <h1 class='container d-flex justify-content-center my-5'>Введите учётные данные</h1>
+  <form name="logForm" class="my-5" action="/user" method="POST">
+    <div class="mb-3">
+      <input type="login" class="form-control" id="login" name="login" placeholder="Логин">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+  <div id='error'></div>
 
-<h1 class='container d-flex justify-content-center my-5'>Введите учётные данные</h1>
-<form name="logForm" class="my-5" action="/user" method="POST">
-  <div class="mb-3">
-    <input type="login" class="form-control" id="login" name="login" placeholder="Логин">
-  </div>
-  <div class="mb-3">
+
+</div> --}}
+
+<body class="text-center">
+  <form action="/user" name="logForm" method="post" class="form-signin" style="margin:0% 30% 0% 30%" >
+    <img class="mb-4" src="https://banco.az/sites/default/files/news/crm.jpg" alt=""  height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Введите учётные данные</h1>
+
+    <label for="inputLogin" class="sr-only">Логин</label>
+     <input type="login" class="form-control" id="login" name="login" placeholder="Логин">
+    <label for="inputPassword" class="sr-only">Пароль</label>
     <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
-  </div>
-  <button type="submit" class="btn btn-primary">Отправить</button>
-</form>
-<div id='error'></div>
-
-
+    {{!-- <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div> --}}
+    <button class="btn btn-lg btn-success btn-block" type="submit" style="margin:20px">Отправить</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+  </form>
+</body>

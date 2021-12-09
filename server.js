@@ -9,8 +9,9 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const indexRouter = require('./src/routes/indexRouter');
-const usersRouter = require('./src/routes/users');
-const clientsRouter = require('./src/routes/clients');
+const users = require('./src/routes/users');
+const clients = require('./src/routes/clients');
+const admin = require('./src/routes/admin');
 // const orderRouter = require('./src/routes/orderRouter');
 
 const PORT = process.env.PORT ?? 3000;
@@ -35,8 +36,8 @@ app.set('views', path.join(process.env.PWD, 'src', 'views'));
 hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
 
 // Hepler для скрытия кнопок изменения/удаления у разных пользователей
-hbs.registerHelper('if_eq', function (a, b, opts) {
-  if (a === b) {
+hbs.registerHelper('if_noeq', function (a, b, opts) {
+  if (a !== b) {
     return opts.fn(this);
   }
   return opts.inverse(this);
@@ -50,16 +51,17 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   if (req.session.userId) {
-    res.locals.uploads = process.env.STATIC_PATH;
     res.locals.userId = req.session.userId;
-    res.locals.userName = req.session.userName;
+    res.locals.userLogin = req.session.userLogin;
+    res.locals.userAdmin = req.session.userAdmin;
   }
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/clients', clientsRouter);
+app.use('/users', users);
+app.use('/clients', clients);
+app.use('/admin', admin);
 // app.use('/order', orderRouter);
 
 app.use((req, res, next) => {

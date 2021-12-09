@@ -1,0 +1,36 @@
+<script defer src="/js/admin.js"></script>
+
+<div data-admin class="container my-5">
+  <h1 class='container d-flex justify-content-center my-30'>Учётные записи CRM</h1>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Логин</th>
+        <th scope="col">Пароль</th>
+        <th scope="col">Статус</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users}}
+      <tr>
+        <th scope="row">{{this.id}}</th>
+        <td>{{this.login}}</td>
+        <td>{{this.password}}</td>
+        <td>
+          {{#if_noeq ../userId this.id}}
+          <button data-type='edit' id="{{this.id}}" data-userid="{{this.id}}" data-status={{this.isAdmin}}
+            class='btn btn-outline-primary btn-sm'>{{this.isAdmin}}</button>
+          {{/if_noeq}}
+        </td>
+        <td>
+          {{#if_noeq ../userId this.id}}
+          <button data-type='delete' data-userid="{{this.id}}" class='btn btn-outline-danger btn-sm'>Удалить</button>
+          {{/if_noeq}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
