@@ -1,26 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt')
 const { User } = require('../../db/models')
 const checkAdmin = require('../middleware/checkAdmin')
 
-const saltRounds = 5
-
 router.route('/')
   .get(checkAdmin, async (req, res) => {
-    let users = await User.findAll({ raw: true })
-    // if (users[0].isAdmin === true) {
-    //   users[0].isAdmin = '✅'
-    // }
-    // else {
-    //   users[0].isAdmin = ' '
-    // }
+    let users = await User.findAll({ raw: true, orderBy: [['createdAt', 'DESC']], })
     res.render('admin', { users })
   })
 
 
 router.route('/new')
-  .get((req, res) => {
+  .get(checkAdmin, (req, res) => {
     res.render('entries/newUser', {})
   })
   .post(async (req, res) => {
@@ -34,7 +25,7 @@ router.route('/new')
   })
 
 router.route('/:id/edit')
-  .patch(async (req, res) => {
+  .patch(checkAdmin, async (req, res) => {
     try {
       let newStatus
       if (req.body.status.length === 4)
@@ -42,13 +33,13 @@ router.route('/:id/edit')
       else
         newStatus = true
       await User.update({ isAdmin: newStatus }, { where: { id: req.params.id } });
-      res.json({ newStatus }).sendStatus(200)
+      console.log("server after:", newStatus);
+      res.json({ newStatus })
     } catch (error) {
-      console.log(error);
       res.sendStatus(500);
     }
   })
-  .delete(async (req, res) => {
+  .delete(checkAdmin, async (req, res) => {
     try {
       await User.destroy({ where: { id: req.params.id } });
       res.sendStatus(200);

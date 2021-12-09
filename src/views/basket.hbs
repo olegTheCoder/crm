@@ -4,12 +4,26 @@
   <p>{{client.comments}}</p>
 </main>
 
+<a href="/clients/basket/{{client.id}}"> Давай СЮДА</a>
 
 <body>
   <h2>Заказы клиента</h2>
   {{#each orderClient}}
-<p>{{this.orderNumber}}</p>
-<p>{{this.type}}</p>
-<p>{{this.price}}</p>
+  <div class="orderDiv">
+    <p>{{this.orderNumber}}</p>
+    <p>{{this.type}}</p>
+    <p>{{this.price}}</p>
+    <p>{{this.deliveryCost}}</p>
+    <p>{{this.setupCost}}</p>
+    <p>{{this.comments}}</p>
+    <p>{{this.deliveryDate}}</p>
+    <p>{{this.setupDate}}</p>
+    <p>{{this.courierTeam}}</p>
+    <p>{{this.setupTeam}}</p>
+    <p>{{this.status}}</p>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/change/{{this.id}}';" class="btnEditClient"
+      type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
+    <button data-divid="{{this.id}}" class="btnDeleteOrder" type="click">Удали МЕНЯ, УМОЛЯЮ!!! </button>
+  </div >
   {{/each}}
 </body>
