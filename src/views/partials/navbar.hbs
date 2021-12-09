@@ -1,29 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9dc9f8;">
-
-
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c7e2fd;">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNav">
       <form class="d-flex justify-content-end">
         <ul class="navbar-nav">
-          {{#if userName}}
+          {{#if userLogin}}
           <li class="nav-item">
-            <p class="nav-link">Привет, {{userName}}</p>
+            <p class="nav-link">Привет, {{userLogin}}</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link"><a href="/clients">Клиенты</a></p>
           </li>
           {{/if}}
-          {{#if isAdmin}}
+          {{#if userAdmin}}
           <li class="nav-item">
-            <p class="nav-link"><a class="nav-link" href="/admin">Кабинет админа</a></p>
+            <p class="nav-link"><a href="/admin">Кабинет админа</a></p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link"><a href="/admin/new">Добавить пользователя</a></p>
           </li>
           {{/if}}
-
-
+          {{#if userLogin}}
+          <li class="nav-item">
+            <p class="nav-link"><a href="/users/logout">Выйти</a>
+          </li>
+          {{/if}}
         </ul>
       </form>
       </ul>
     </div>
   </div>
-
-
-
-
 </nav>

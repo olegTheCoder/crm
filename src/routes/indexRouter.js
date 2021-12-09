@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-  res.redirect('/user')
+  res.redirect('/users')
 })
 
 module.exports = router
