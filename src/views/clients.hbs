@@ -43,6 +43,8 @@
        style="margin: 20px" class='btn btn-outline-success btn-sm '>Создать клиента</button> 
         {{!-- {{#if allClient}} --}}
        {{#each allClient}}
+      <div class="clientDiv" data-divid="{{this.id}}">
+
       <tr>
         <th scope="row">{{this.id}}</th>
         <td><a href="/clients/{{this.id}}">{{this.name}}</a></td>
@@ -55,7 +57,6 @@
         </td>
         <td><button data-divid="{{this.id}}" type="click" class='btn btn-outline-danger btn-sm btnDeleteClient'>Удалить</button></td>
       </tr>
-      <div>
         
       </div>
       {{/each}}
