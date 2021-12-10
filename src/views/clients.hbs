@@ -1,7 +1,4 @@
-
-
-
- {{!-- <main>
+{{!-- <main>
 
 
   {{#if allClient}}
@@ -10,17 +7,17 @@
     <a href="/clients/{{this.id}}">{{this.name}}</a>
     <p>{{this.adress}}</p>
     <p>{{this.comments}}</p>
-    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
-      type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
+      class="btnEditClient" type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
     <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удали МЕНЯ! </button>
   </div>
   {{/each}}
   {{else }}
   <h1>Клиентов нет</h1>
   {{/if}}
-</main> 
+</main>
 
- --}}
+--}}
 
 
 
@@ -39,24 +36,26 @@
       </tr>
     </thead>
     <tbody>
-      <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/new'" type="click" 
-       style="margin: 20px" class='btn btn-outline-success btn-sm '>Создать клиента</button> 
-        {{!-- {{#if allClient}} --}}
-       {{#each allClient}}
-      <tr>
-        <th scope="row">{{this.id}}</th>
-        <td><a href="/clients/{{this.id}}">{{this.name}}</a></td>
-        <td>{{this.adress}}</td>
-        <td>{{this.comments}}</td>
-        <td>
-          <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
-            type="click" class='btn btn-outline-primary btn-sm'>Изменить</button> 
-           
-        </td>
-        <td><button data-divid="{{this.id}}" type="click" class='btn btn-outline-danger btn-sm btnDeleteClient'>Удалить</button></td>
-      </tr>
-      <div>
-        
+      <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/new'" type="click" style="margin: 20px"
+        class='btn btn-outline-success btn-sm '>Создать клиента</button>
+      {{!-- {{#if allClient}} --}}
+      {{#each allClient}}
+      <div class="clientDiv" data-divid="{{this.id}}">
+        <tr>
+          <th scope="row">{{this.id}}</th>
+          <td><a href="/clients/{{this.id}}">{{this.name}}</a></td>
+          <td>{{this.adress}}</td>
+          <td>{{this.comments}}</td>
+          <td>
+            <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
+              type="click" class='btn btn-outline-primary btn-sm'>Изменить</button>
+
+          </td>
+          <td><button data-divid="{{this.id}}" type="click"
+              class='btn btn-outline-danger btn-sm btnDeleteClient'>Удалить</button></td>
+        </tr>
+
+
       </div>
       {{/each}}
     </tbody>

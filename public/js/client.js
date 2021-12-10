@@ -9,7 +9,7 @@ for (let i = 0; i < btn.length; i++) {
     const respon = await fetch(`/clients/${divid}`, {
       method: 'DELETE',
     });
-    e.target.closest('.clientDiv').remove();
+    e.target.parentNode.parentNode.remove();
   });
 }
 
