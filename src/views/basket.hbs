@@ -1,10 +1,29 @@
-<main>
+{{!-- <main>
   <h1>ФИО клиента: {{client.name}}</h1>
   <p>Адрес проживания: {{client.adress}}</p>
   <p>Комментарии: {{client.comments}}</p>
 </main>
 
 <a href="/clients/basket/{{client.id}}"> Создать заказ</a>
+<form action="/clients//search_order" method="PUT" id="orderSearch" name="orderSearch">
+  <p>Поиск заказов</p>
+  <input type="text" name="orderSearch">
+  <select id="orderSelect" name="orderSelect">
+    <option value="orderNumber">номер заказа</option>
+    <option value="type">тип мебели</option>
+    <option value="price">стоимость мебели</option>
+    <option value="deliveryCost">стоимость доставки</option>
+    <option value="setupCost">стоимость сборки</option>
+    <option value="comments">комментарии к заказу</option>
+    <option value="deliveryDate">дата доставки</option>
+    <option value="setupDate">дата сборки</option>
+    <option value="courierTeam">бригада доставки</option>
+    <option value="setupTeam">бригада сборки</option>
+    <option value="status">статусы</option>
+  </select>
+  <button class="orderSearch" type="submit">Найти</button>
+</form>
+
 
 <body>
   {{#if orderClient}}
@@ -31,3 +50,71 @@
   <h1>Список заказов пуст</h1>
   {{/if}}
 </body>
+
+========== --}}
+
+
+
+
+
+
+
+
+
+  <form action="/clients//search_order" method="PUT" id="orderSearch" name="orderSearch">
+  <div data-admin class="container my-5">
+  <h1 class='container d-flex justify-content-center my-30'>ФИО клиента: {{client.name}}</h1>
+  <h1 class='container d-flex justify-content-center my-30'>Адрес проживания: {{client.adress}}</h1>
+  <h1 class='container d-flex justify-content-center my-30'>Комментарии: {{client.comments}}</h1>
+  <table class="table table-dark table-striped">
+    
+    <thead>
+      <tr>
+        <th value="orderNumber">номер заказа</th>
+        <th value="type">тип мебели</th>
+        <th value="price">стоимость мебели</th>
+        <th value="deliveryCost">стоимость доставки</th>
+        <th value="setupCost">стоимость сборки</th>
+        <th value="comments">комментарии к заказу</th>
+        <th value="deliveryDate">дата доставки</th>
+        <th value="setupDate">дата сборки</th>
+        <th value="courierTeam">бригада доставки</th>
+        <th value="setupTeam">бригада сборки</th>
+        <th value="status">статусы</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/{{client.id}}'" type="click" 
+       style="margin: 20px" class='btn btn-outline-success btn-sm '>Создать заказ</button> 
+       
+        <input type="text" name="orderSearch" placeholder="Поиск заказов">
+          <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
+            type="submit" style="margin: 20px" class='btn btn-outline-primary btn-sm orderSearch'>Найти</button> 
+</form>
+
+        <h2>Заказы клиента</h2>
+        {{#each orderClient}}
+        <div class="orderDiv">
+            <tr>
+                  <th>{{this.orderNumber}}</th>
+                  <td>{{this.type}}</td>
+                  <td>{{this.price}} руб.</td>
+                  <td>{{this.deliveryCost}} руб.</td>
+                  <td>{{this.setupCost}} руб.</td>
+                  <td>{{this.comments}}</td>
+                  <td>{{this.deliveryDate}}</td>
+                  <td>{{this.setupDate}}</td>
+                  <td>{{this.courierTeam}}</td>
+                  <td>{{this.setupTeam}}</td>
+                  <td>{{this.status}}</td>
+                  <td><button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/change/{{this.id}}';"
+                      type="click" class='btnEditClient btn btn-outline-primary btn-sm '>Изменить</button> </td>
+                  <td><button data-divid="{{this.id}}" type="click" class='btnDeleteOrder btn btn-outline-danger btn-sm '>Удалить</button></td>
+          </tr>  
+      </div>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

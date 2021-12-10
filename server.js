@@ -42,6 +42,7 @@ hbs.registerHelper('if_noeq', function (a, b, opts) {
   return opts.inverse(this);
 });
 
+// Hepler для скрытия кнопок изменения/удаления у разных пользователей
 hbs.registerHelper('if_noeq', function(a, b, opts) {
   if (a !== b) {
       return opts.fn(this);

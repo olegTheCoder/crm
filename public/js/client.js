@@ -14,7 +14,6 @@ for (let i = 0; i < btn.length; i++) {
 }
 
 const btnOrd = document.querySelectorAll('.btnDeleteOrder');
-console.log(btnOrd);
 for (let i = 0; i < btnOrd.length; i++) {
   btnOrd[i].addEventListener('click', async (e) => {
     e.preventDefault();
@@ -24,7 +23,8 @@ for (let i = 0; i < btnOrd.length; i++) {
     const respon = await fetch(`/clients/basket/${divid}`, {
       method: 'DELETE',
     });
-    e.target.closest('.orderDiv').remove();
+    console.log(e.target.parentNode.parentNode);
+    e.target.parentNode.parentNode.remove();
   });
 }
 
@@ -78,7 +78,43 @@ if (document.getElementById('changeFormBasket')) {
     });
 
     const result = await respon.json();
-    console.log(result);
+
     window.location.assign(`/clients/${result.superId}`);
+  });
+}
+
+if (document.getElementById('clientSearch')) {
+  const clientSearch = document.getElementById('clientSearch');
+  clientSearch.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const searchData = { text: e.target.clientSearch.value, select: e.target.clientSelect.value };
+
+    const respon = await fetch('/clients/search', {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(searchData),
+    });
+    const result = await respon.json();
+    window.location.assign(`/clients/search?text=${result.text}&select=${result.select}`);
+  });
+}
+
+if (document.getElementById('orderSearch')) {
+  const orderSearch = document.getElementById('orderSearch');
+  orderSearch.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const searchData = { text: e.target.orderSearch.value, select: e.target.orderSelect.value };
+
+    const respon = await fetch('/clients/search_order', {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(searchData),
+    });
+    const result = await respon.json();
+    window.location.assign(`/clients/search_order?text=${result.text}&select=${result.select}`);
   });
 }

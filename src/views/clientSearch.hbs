@@ -1,0 +1,32 @@
+<div>
+  <a href="/clients/new"> Создай клиента</a>
+</div>
+
+
+<form action="/clients/search" method="PUT" id="clientSearch" name="clientSearch">
+  <p>Поиск клиента</p>
+  <input type="text" name="clientSearch">
+  <select id="clientSelect" name="clientSelect">
+    <option value="name">по имени</option>
+    <option value="adress">по адресу</option>
+    <option value="comment">по имени</option>
+  </select>
+  <button class="clientSearch" type="submit">Найти</button>
+</form>
+
+<main>
+  {{#if allClient}}
+  {{#each allClient}}
+  <div class="clientDiv" data-divid="{{this.id}}">
+    <a href="/clients/{{this.id}}">{{this.name}}</a>
+    <p>{{this.adress}}</p>
+    <p>{{this.comments}}</p>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
+      type="click"> Редактировать клиента</button>
+    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удалить клиента  </button>
+  </div>
+  {{/each}}
+  {{else}}
+  <h1>Список клиентов пуст</h1>
+  {{/if}}
+</main>
