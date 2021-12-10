@@ -30,9 +30,11 @@ adminForm.addEventListener('click', async (event) => {
       },
       body: JSON.stringify({ userid, status }),
     });
-    let data = await response.json();
+    const data = await response.json();
     if (response.status === 200) {
+      console.log(data);
       const button = document.getElementById(`${userid}`);
+      console.log(data);
       button.innerText = data.newStatus;
     } else {
       alert('Ошибка');

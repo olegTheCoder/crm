@@ -31,7 +31,6 @@ router.route('/:id/edit')
       if (req.body.status.length === 4) newStatus = false;
       else { newStatus = true; }
       await User.update({ isAdmin: newStatus }, { where: { id: req.params.id } });
-      console.log('server after:', newStatus);
       res.json({ newStatus });
     } catch (error) {
       res.sendStatus(500);
