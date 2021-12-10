@@ -1,29 +1,33 @@
 <main>
-  <h1>{{client.name}}</h1>
-  <p>{{client.adress}}</p>
-  <p>{{client.comments}}</p>
+  <h1>ФИО клиента: {{client.name}}</h1>
+  <p>Адрес проживания: {{client.adress}}</p>
+  <p>Комментарии: {{client.comments}}</p>
 </main>
 
-<a href="/clients/basket/{{client.id}}"> Давай СЮДА</a>
+<a href="/clients/basket/{{client.id}}"> Создать заказ</a>
 
 <body>
+  {{#if orderClient}}
   <h2>Заказы клиента</h2>
   {{#each orderClient}}
   <div class="orderDiv">
-    <p>{{this.orderNumber}}</p>
-    <p>{{this.type}}</p>
-    <p>{{this.price}}</p>
-    <p>{{this.deliveryCost}}</p>
-    <p>{{this.setupCost}}</p>
-    <p>{{this.comments}}</p>
-    <p>{{this.deliveryDate}}</p>
-    <p>{{this.setupDate}}</p>
-    <p>{{this.courierTeam}}</p>
-    <p>{{this.setupTeam}}</p>
-    <p>{{this.status}}</p>
-    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/change/{{this.id}}';" class="btnEditClient"
-      type="click"> Изменить</button>
-    <button data-divid="{{this.id}}" class="btnDeleteOrder" type="click">Удалить </button>
-  </div >
+    <p>Номер заказа: {{this.orderNumber}}</p>
+    <p>Тип мебели: {{this.type}}</p>
+    <p>Стоимость мебели: {{this.price}} руб.</p>
+    <p>Стоимость доставки: {{this.deliveryCost}} руб.</p>
+    <p>Стоимость сборки: {{this.setupCost}}  руб.</p>
+    <p>Комментарии к заказу: {{this.comments}}</p>
+    <p>Дата доставки: {{this.deliveryDate}}</p>
+    <p>Дата сборки: {{this.setupDate}}</p>
+    <p>Бригада доставки: {{this.courierTeam}}</p>
+    <p>Бригада сборки: {{this.setupTeam}}</p>
+    <p>Статусы: {{this.status}}</p>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/change/{{this.id}}';"
+      class="btnEditClient" type="click">Редактировать заказ</button>
+    <button data-divid="{{this.id}}" class="btnDeleteOrder" type="click">Удалить заказ</button>
+  </div>
   {{/each}}
+  {{else}}
+  <h1>Список заказов пуст</h1>
+  {{/if}}
 </body>

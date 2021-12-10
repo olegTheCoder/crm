@@ -8,6 +8,7 @@ require('dotenv').config();
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+
 const indexRouter = require('./src/routes/indexRouter');
 const users = require('./src/routes/users');
 const clients = require('./src/routes/clients');
@@ -40,6 +41,15 @@ hbs.registerHelper('if_noeq', function (a, b, opts) {
   }
   return opts.inverse(this);
 });
+
+hbs.registerHelper('if_noeq', function(a, b, opts) {
+  if (a !== b) {
+      return opts.fn(this);
+  } else {
+      return opts.inverse(this);
+  }
+});
+// -------------------------------------------------------------------
 
 app.use(sessionParser);
 app.use(express.static(path.join(process.env.PWD, 'public')));

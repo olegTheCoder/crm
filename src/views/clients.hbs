@@ -1,5 +1,5 @@
 <div>
-  <a href="/clients/new"> Создай клиента</a>
+  <a href="/clients/new"> Создать клиента</a>
 </div>
 
 
@@ -12,13 +12,60 @@
   <div class="clientDiv" data-divid="{{this.id}}">
     <a href="/clients/{{this.id}}">{{this.name}}</a>
     <p>{{this.adress}}</p>
-    <p>{{this.comments}}</p>
+    <p class="lol">{{this.comments}}</p>
     <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
-      type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
-    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удали МЕНЯ! </button>
+      type="click"> Редактировать клиента</button>
+    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удалить клиента </button>
   </div>
   {{/each}}
   {{else }}
-  <h1>Клиентов нет</h1>
+  <h1>Список клиентов пуст</h1>
+  
+  
+  
+  =============
+  
+  <div data-admin class="container my-5">
+  <h1 class='container d-flex justify-content-center my-30'>Список клиентов</h1>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ФИО</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Комментарии</th>
+      </tr>
+    </thead>
+    <tbody>
+     {{#each allClient}}
+      <tr>
+        <th scope="row"><a href="/clients/{{this.id}}">{{this.name}}</a></th>
+        <td>{{this.adress}}</td>
+        <td class="lol">{{this.comments}}</td>
+        <td><button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class='btn btn-outline-primary btn-sm'>Редактировать клиента</button> </td>
+       <td><button data-divid="{{this.id}}" data-userid="{{this.id}}" class='btn btn-outline-danger btn-sm' type="click">Удалить клиента</button></td>       
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   {{/if}}
 </main>
