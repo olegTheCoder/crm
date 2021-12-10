@@ -30,7 +30,7 @@ adminForm.addEventListener('click', async (event) => {
       },
       body: JSON.stringify({ userid, status }),
     });
-    const data = await response.json();
+    let data = await response.json();
     if (response.status === 200) {
       const button = document.getElementById(`${userid}`);
       button.innerText = data.newStatus;

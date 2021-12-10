@@ -1,21 +1,33 @@
 <script defer src="/js/new.js"></script>
 
 
-  <form name="postForm" class="my-5" action="admin/new" method="POST">
-    <div class="mb-3">
-      <label for="text" class="form-label">Введите логин</label>
-      <input type="text" class="form-control" id="login" name="login">
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Введите пароль</label>
-      <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <div class="mb-3">
-      <label for="sampleFile" class="form-label">Выберите статус</label>
-      <input type="boolean" class="form-control" id="isAdmin" name="isAdmin">
-    </div>
-    <button type="submit" class="btn btn-primary">Отправить</button>
-  </form>
+<form name="postForm" class="my-5" action="admin/new" method="POST">
+  <div class="mb-3">
+    <label for="text" class="form-label">Введите логин</label>
+    <input type="text" class="form-control" id="login" name="login">
+  </div>
+  <div class="mb-3">
+    <label for="text" class="form-label">Введите пароль</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+  <div class="mb-3">
+    <select class="mb-3 form-select" aria-label="Default select example" name="isAdmin">
+      <option selected>Выберите статус</option>
+      <option>true</option>
+      <option>false</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
 
-  <div id='error'></div>
+<div id='error'></div>
 
+{{!-- <select class="mb-3 form-select" aria-label="Default select example" name="isAdmin">
+  <option selected>Выберите статус</option>
+  <option>true</option>
+  <option>false</option>
+</select> --}}
+
+
+{{!-- <label for="sampleFile" class="form-label">Выберите статус</label>
+<input type="boolean" class="form-control" id="isAdmin" name="isAdmin"> --}}

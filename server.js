@@ -34,15 +34,12 @@ const sessionParser = session(sessionConfig);
 app.set('view engine', 'hbs');
 app.set('views', path.join(process.env.PWD, 'src', 'views'));
 hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
-
-// Hepler для скрытия кнопок изменения/удаления у разных пользователей
 hbs.registerHelper('if_noeq', function (a, b, opts) {
   if (a !== b) {
     return opts.fn(this);
   }
   return opts.inverse(this);
 });
-// -------------------------------------------------------------------
 
 app.use(sessionParser);
 app.use(express.static(path.join(process.env.PWD, 'public')));

@@ -4,15 +4,14 @@ const router = express.Router();
 const { User } = require('../../db/models');
 const checkAdmin = require('../middleware/checkAdmin');
 
-
 router.route('/')
   .get(checkAdmin, async (req, res) => {
-    const users = await User.findAll({ raw: true });
+    const users = await User.findAll({ raw: true, orderBy: [['createdAt', 'DESC']] });
     res.render('admin', { users });
   });
 
 router.route('/new')
-  .get((req, res) => {
+  .get(checkAdmin, (req, res) => {
     res.render('entries/newUser', {});
   })
   .post(async (req, res) => {
@@ -26,19 +25,19 @@ router.route('/new')
   });
 
 router.route('/:id/edit')
-  .patch(async (req, res) => {
+  .patch(checkAdmin, async (req, res) => {
     try {
       let newStatus;
       if (req.body.status.length === 4) newStatus = false;
       else { newStatus = true; }
       await User.update({ isAdmin: newStatus }, { where: { id: req.params.id } });
+      console.log('server after:', newStatus);
       res.json({ newStatus });
     } catch (error) {
-      console.log(error);
       res.sendStatus(500);
     }
   })
-  .delete(async (req, res) => {
+  .delete(checkAdmin, async (req, res) => {
     try {
       await User.destroy({ where: { id: req.params.id } });
       res.sendStatus(200);

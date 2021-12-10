@@ -16,22 +16,15 @@ router.route('/')
           login,
         },
       });
-      if (login === 'admin') {
-        if (!currUser || !((password === currUser.password))) {
-          return res.sendStatus(500);
-        }
 
-        req.session.userId = currUser.id;
-        req.session.userLogin = currUser.login;
-        req.session.userAdmin = currUser.isAdmin;
-        res.sendStatus(200);
-      } else {
-        req.session.userId = currUser.id;
-        req.session.userLogin = currUser.login;
-        req.session.userAdmin = currUser.isAdmin;
-
-        res.sendStatus(200);
+      if (!currUser || !((password === currUser.password))) {
+        return res.sendStatus(500);
       }
+
+      req.session.userId = currUser.id;
+      req.session.userLogin = currUser.login;
+      req.session.userAdmin = currUser.isAdmin;
+      res.sendStatus(200);
     } catch (err) {
       res.sendStatus(500);
     }
