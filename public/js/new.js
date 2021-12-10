@@ -3,8 +3,6 @@ const postForm = document.forms.postForm
 postForm.addEventListener('submit', async (e) => {
   e.preventDefault()
   const formData = Object.fromEntries(new FormData(postForm));
-  console.log('client---->', formData);
-
   if (formData.login && formData.password && formData.isAdmin) {
     const response = await fetch('/admin/new', {
       method: 'POST',

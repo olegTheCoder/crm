@@ -23,18 +23,18 @@ adminForm.addEventListener('click', async (event) => {
   }
   if (event.target.dataset.type === 'edit') {
     const oneadmin = event.target.closest('[data-userid]');
-    const id = oneadmin.dataset.userid;
-    const status = oneadmin.dataset.status;
-    const response = await fetch(`${window.location.origin}/admin/${id}/edit`, {
+    const { userid, status } = oneadmin.dataset
+
+    const response = await fetch(`${window.location.origin}/admin/${userid}/edit`, {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ id, status }),
+      body: JSON.stringify({ userid, status }),
     });
     let data = await response.json();
     if (response.status === 200) {
-      let button = document.getElementById(`${id}`)
+      let button = document.getElementById(`${userid}`)
       button.innerText = data.newStatus
     } else {
       alert('Ошибка');
