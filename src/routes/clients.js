@@ -8,7 +8,38 @@ router.get('/', async (req, res, next) => {
   res.render('clients', { allClient });
 });
 
+// поиск клиента
 
+router.put('/search', async(req, res) => {
+  const temp = req.body;
+  res.json(temp)
+})
+
+router.get('/search', async (req, res)=>{
+  const { text, select } = await req.query
+  const allClient = await Client.findAll({ 
+    where: {[select]: text},
+    order: [['id', 'DESC']],
+  })
+  res.render('clientSearch', {allClient})
+})
+
+// поиск заказа
+
+router.put('/search_order', async(req, res) => {
+  const temp = req.body;
+  res.json(temp)
+})
+
+router.get('/search_order', async (req, res)=>{
+  const { text, select } = await req.query
+  console.log('------------->', req.query);
+  const orderClient = await Order.findAll({ 
+    where: {[select]: text},
+    order: [['id', 'DESC']],
+  })
+  res.render('basketSearch', {orderClient})
+})
 
 router.get('/new', (req, res) => {
   res.render('clientCreate')

@@ -1,9 +1,3 @@
-<main>
-  <h1>{{client.name}}</h1>
-  <p>{{client.adress}}</p>
-  <p>{{client.comments}}</p>
-</main>
-
 <form action="/clients//search_order" method="PUT" id="orderSearch" name="orderSearch">
   <p>Поиск заказов</p>
   <input type="text" name="orderSearch">
@@ -23,10 +17,9 @@
   <button class="orderSearch" type="submit">Найти</button>
 </form>
 
-<a href="/clients/basket/{{client.id}}"> Давай СЮДА</a>
-
 <body>
   <h2>Заказы клиента</h2>
+    {{#if orderClient}}
   {{#each orderClient}}
   <div class="orderDiv">
     <p>{{this.orderNumber}}</p>
@@ -45,4 +38,7 @@
     <button data-divid="{{this.id}}" class="btnDeleteOrder" type="click">Удали МЕНЯ, УМОЛЯЮ!!! </button>
   </div >
   {{/each}}
+    {{else}}
+      <h1>Ничего не найдено</h1>
+  {{/if}}
 </body>
