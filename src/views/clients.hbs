@@ -1,5 +1,5 @@
 <div>
-  <a href="/clients/new"> Создай клиента</a>
+  <a href="/clients/new"> Создать клиента</a>
 </div>
 
 
@@ -12,9 +12,9 @@
   <div class="clientDiv" data-divid="{{this.id}}">
     <a href="/clients/{{this.id}}">{{this.name}}</a>
     <p>{{this.adress}}</p>
-    <p>{{this.comments}}</p>
+    <p class="lol">{{this.comments}}</p>
     <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
-      type="click"> Редактировать</button>
+      type="click"> Редактировать клиента</button>
     <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удалить клиента </button>
   </div>
   {{/each}}
