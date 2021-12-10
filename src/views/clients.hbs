@@ -14,11 +14,11 @@
     <p>{{this.adress}}</p>
     <p>{{this.comments}}</p>
     <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
-      type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
-    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удали МЕНЯ! </button>
+      type="click"> Редактировать</button>
+    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удалить клиента </button>
   </div>
   {{/each}}
   {{else }}
-  <h1>Клиентов нет</h1>
+  <h1>Список клиентов пуст</h1>
   {{/if}}
 </main>

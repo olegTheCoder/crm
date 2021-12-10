@@ -1,4 +1,4 @@
-<h1>{{user.name}} ИЗМЕНЯЙ!!!!!</h1>
+<h1>редактирования заказа клиента {{user.name}} </h1>
 <form action="/clients/basket/change/{{order.id}}" id="changeFormBasket" data-divid="{{order.id}}" method="PUT"
   name="orderUpdate">
   <input type="number" name="orderNumber" value="{{order.orderNumber}}">
@@ -14,5 +14,5 @@
   <input type="text" name="status" value="{{order.status}}">
 
 
-  <button type="submit">оооо ДА, я знаю, что ТЫ хочешь ИЗМЕНИТЬ!!!!!!</button>
+  <button type="submit">Сохранить изменения</button>
 </form>
