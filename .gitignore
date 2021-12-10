@@ -124,3 +124,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# else
+
+.package-lock.json
+.public/js/client.js
+.env

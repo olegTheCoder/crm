@@ -5,6 +5,25 @@
 </main>
 
 <a href="/clients/basket/{{client.id}}"> Создать заказ</a>
+<form action="/clients//search_order" method="PUT" id="orderSearch" name="orderSearch">
+  <p>Поиск заказов</p>
+  <input type="text" name="orderSearch">
+  <select id="orderSelect" name="orderSelect">
+    <option value="orderNumber">номер заказа</option>
+    <option value="type">тип мебели</option>
+    <option value="price">стоимость мебели</option>
+    <option value="deliveryCost">стоимость доставки</option>
+    <option value="setupCost">стоимость сборки</option>
+    <option value="comments">комментарии к заказу</option>
+    <option value="deliveryDate">дата доставки</option>
+    <option value="setupDate">дата сборки</option>
+    <option value="courierTeam">бригада доставки</option>
+    <option value="setupTeam">бригада сборки</option>
+    <option value="status">статусы</option>
+  </select>
+  <button class="orderSearch" type="submit">Найти</button>
+</form>
+
 
 <body>
   {{#if orderClient}}
