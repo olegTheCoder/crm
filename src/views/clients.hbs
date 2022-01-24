@@ -1,32 +1,65 @@
-<div>
-  <a href="/clients/new"> Создать клиента</a>
-</div>
 
 
-<form action="/clients/search" method="PUT" id="clientSearch" name="clientSearch">
-  <p>Поиск клиента</p>
-  <input type="text" name="clientSearch">
-  <select id="clientSelect" name="clientSelect">
-    <option value="name">по имени</option>
-    <option value="adress">по адресу</option>
-    <option value="comment">по имени</option>
-  </select>
-  <button class="clientSearch" type="submit">Найти</button>
-</form>
 
-<main>
+ {{!-- <main>
+
+
   {{#if allClient}}
   {{#each allClient}}
   <div class="clientDiv" data-divid="{{this.id}}">
     <a href="/clients/{{this.id}}">{{this.name}}</a>
     <p>{{this.adress}}</p>
-    <p class="lol">{{this.comments}}</p>
-    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
-      class="btnEditClient" type="click"> Редактировать клиента</button>
-    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удалить клиента </button>
+    <p>{{this.comments}}</p>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';" class="btnEditClient"
+      type="click"> Измени МЕНЯ, ПРОШУ!!!</button>
+    <button data-divid="{{this.id}}" class="btnDeleteClient" type="click">Удали МЕНЯ! </button>
   </div>
   {{/each}}
   {{else }}
-  <h1>Список клиентов пуст</h1>
+  <h1>Клиентов нет</h1>
   {{/if}}
-</main>
+</main> 
+
+ --}}
+
+
+
+
+<div data-admin class="container my-5">
+  <h1 class='container d-flex justify-content-center my-30'>Список клиентов</h1>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Комментарии</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/new'" type="click" 
+       style="margin: 20px" class='btn btn-outline-success btn-sm '>Создать клиента</button> 
+        {{!-- {{#if allClient}} --}}
+       {{#each allClient}}
+      <div class="clientDiv" data-divid="{{this.id}}">
+
+      <tr>
+        <th scope="row">{{this.id}}</th>
+        <td><a href="/clients/{{this.id}}">{{this.name}}</a></td>
+        <td>{{this.adress}}</td>
+        <td>{{this.comments}}</td>
+        <td>
+          <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/change/{{this.id}}';"
+            type="click" class='btn btn-outline-primary btn-sm'>Изменить</button> 
+           
+        </td>
+        <td><button data-divid="{{this.id}}" type="click" class='btn btn-outline-danger btn-sm btnDeleteClient'>Удалить</button></td>
+      </tr>
+        
+      </div>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

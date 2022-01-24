@@ -27,10 +27,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       deliveryDate: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       setupDate: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       courierTeam: {
         type: Sequelize.STRING,

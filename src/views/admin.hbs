@@ -21,7 +21,9 @@
         <td>
           {{#if_noeq ../userId this.id}}
           <button data-type='edit' id="{{this.id}}" data-userid="{{this.id}}" data-status={{this.isAdmin}}
-            class='btn btn-outline-primary btn-sm'>{{this.isAdmin}}</button>
+            class='btn btn-outline-primary btn-sm'>{{this.isAdmin}}</button> 
+           
+
           {{/if_noeq}}
         </td>
         <td>
@@ -34,3 +36,6 @@
     </tbody>
   </table>
 </div>
+
+
+  
