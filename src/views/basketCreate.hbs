@@ -1,0 +1,16 @@
+<h1>Создай заказы для {{user.name}}</h1>
+
+<form action="/clients/basket/{{user.id}}" method="POST">
+<input type="number" name="orderNumber" placeholder="Номер заказа">
+<input type="text" name="type" placeholder="Тип мебели">
+<input type="number" name="price" placeholder="Стоимость мебели">
+{{!-- <input type="number" name="deliveryCost" placeholder="Стоимость доставки"> --}}
+{{!-- <input type="number" name="setupCost" placeholder="Стоимость сборки"> --}}
+<input type="text" name="comments" placeholder="Комментарии к заказу ">
+<input type="number" name="deliveryDate" placeholder="Дата доставки">
+<input type="number" name="setupDate" placeholder="Дата сборки">
+<input type="text" name="courierTeam" placeholder="Бригада доставки">
+<input type="text" name="setupTeam" placeholder="Бригада сборки">
+<input type="text" name="status" placeholder="Статусы">
+<button type="submit"> Создать заказ</button>
+</form>

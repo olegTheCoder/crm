@@ -1,0 +1,20 @@
+
+  <h1 class='container d-flex justify-content-center my-50'>Clients</h1>
+  <div data-clients class='container d-flex justify-content-center my-50'>
+    {{#each allClients}}
+    <div data-id={{this}} class='card my-3' style='width: 18rem;'>
+     
+      <div class='card-body'>
+        <p class='card-text'>{{this}}</p>
+      
+      </div>
+     
+     
+     
+      
+    </div>
+    {{/each}}
+  </div>
+
+
+

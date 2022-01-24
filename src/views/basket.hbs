@@ -1,0 +1,52 @@
+<main>
+  <h1>ФИО клиента: {{client.name}}</h1>
+  <p>Адрес проживания: {{client.adress}}</p>
+  <p>Комментарии: {{client.comments}}</p>
+</main>
+
+<a href="/clients/basket/{{client.id}}"> Создать заказ</a>
+<form action="/clients//search_order" method="PUT" id="orderSearch" name="orderSearch">
+  <p>Поиск заказов</p>
+  <input type="text" name="orderSearch">
+  <select id="orderSelect" name="orderSelect">
+    <option value="orderNumber">номер заказа</option>
+    <option value="type">тип мебели</option>
+    <option value="price">стоимость мебели</option>
+    <option value="deliveryCost">стоимость доставки</option>
+    <option value="setupCost">стоимость сборки</option>
+    <option value="comments">комментарии к заказу</option>
+    <option value="deliveryDate">дата доставки</option>
+    <option value="setupDate">дата сборки</option>
+    <option value="courierTeam">бригада доставки</option>
+    <option value="setupTeam">бригада сборки</option>
+    <option value="status">статусы</option>
+  </select>
+  <button class="orderSearch" type="submit">Найти</button>
+</form>
+
+
+<body>
+  {{#if orderClient}}
+  <h2>Заказы клиента</h2>
+  {{#each orderClient}}
+  <div class="orderDiv">
+    <p>Номер заказа: {{this.orderNumber}}</p>
+    <p>Тип мебели: {{this.type}}</p>
+    <p>Стоимость мебели: {{this.price}} руб.</p>
+    <p>Стоимость доставки: {{this.deliveryCost}} руб.</p>
+    <p>Стоимость сборки: {{this.setupCost}}  руб.</p>
+    <p>Комментарии к заказу: {{this.comments}}</p>
+    <p>Дата доставки: {{this.deliveryDate}}</p>
+    <p>Дата сборки: {{this.setupDate}}</p>
+    <p>Бригада доставки: {{this.courierTeam}}</p>
+    <p>Бригада сборки: {{this.setupTeam}}</p>
+    <p>Статусы: {{this.status}}</p>
+    <button data-divid="{{this.id}}" onclick="window.location.href = '/clients/basket/change/{{this.id}}';"
+      class="btnEditClient" type="click">Редактировать заказ</button>
+    <button data-divid="{{this.id}}" class="btnDeleteOrder" type="click">Удалить заказ</button>
+  </div>
+  {{/each}}
+  {{else}}
+  <h1>Список заказов пуст</h1>
+  {{/if}}
+</body>
