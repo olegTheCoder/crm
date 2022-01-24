@@ -1,7 +1,7 @@
 <script defer src="/js/new.js"></script>
 
 
-<form name="postForm" class="my-5" action="admin/new" method="POST">
+<form name="postForm" class="my-5" action="admin/new" method="POST" style="margin:0% 40% 0% 40%">
   <div class="mb-3">
     <label for="text" class="form-label">Введите логин</label>
     <input type="text" class="form-control" id="login" name="login">
@@ -10,24 +10,18 @@
     <label for="text" class="form-label">Введите пароль</label>
     <input type="password" class="form-control" id="password" name="password">
   </div>
-  <div class="mb-3">
-    <select class="mb-3 form-select" aria-label="Default select example" name="isAdmin">
-      <option selected>Выберите статус</option>
-      <option>true</option>
-      <option>false</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Отправить</button>
-</form>
 
+    
+    
+    <div class="form-check form-switch" style="margin-top:20px;">
+  <input class="form-check-input" name="isAdmin" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+  <label class="form-check-label" for="flexSwitchCheckDefault">Администратор</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary"style="margin-top:60px;">Отправить</button>
+</form>
 <div id='error'></div>
 
-{{!-- <select class="mb-3 form-select" aria-label="Default select example" name="isAdmin">
-  <option selected>Выберите статус</option>
-  <option>true</option>
-  <option>false</option>
-</select> --}}
 
 
-{{!-- <label for="sampleFile" class="form-label">Выберите статус</label>
-<input type="boolean" class="form-control" id="isAdmin" name="isAdmin"> --}}
+
