@@ -4,7 +4,7 @@ This is a prototype of a CRM for a big furniture store in Moscow. Our client all
 
 It was deployed on Heroku: https://crmfurniture.herokuapp.com/users
 
-Stack, we used: JS, Express, Bootstrap, PSQL, Sequelize.
+Stack we used: JS, Express, Bootstrap, PSQL, Sequelize.
 
 Here's gif-demo, how it works:
 
