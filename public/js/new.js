@@ -1,8 +1,12 @@
-const postForm = document.forms.postForm
+const { postForm } = document.forms;
 
 postForm.addEventListener('submit', async (e) => {
-  e.preventDefault()
+  e.preventDefault();
   const formData = Object.fromEntries(new FormData(postForm));
+
+
+  if (formData.isAdmin === 'on') { formData.isAdmin = 'true'; } else formData.isAdmin = 'false';
+
   if (formData.login && formData.password && formData.isAdmin) {
     const response = await fetch('/admin/new', {
       method: 'POST',
@@ -10,14 +14,15 @@ postForm.addEventListener('submit', async (e) => {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(formData),
-    })
+    });
     if (response.ok) {
-      window.location = `${window.location.origin}/admin`
+      window.location = `${window.location.origin}/admin`;
     } else {
       document.getElementById('error').innerHTML = `<p style="color:red;">
-      <b>Не заполнены необходимые поля.</b></p>`
+      <b>Неверные данные</b></p>`;
     }
   } else {
     document.getElementById('error').innerHTML = `<p style="color:red;">
-  <b>Не заполнены необходимые поля.</b></p>`}
-})
+  <b>Не заполнены необходимые поля.</b></p>`;
+  }
+});

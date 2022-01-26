@@ -1,6 +1,5 @@
 const adminForm = document.querySelector('[data-admin]');
 
-
 adminForm.addEventListener('click', async (event) => {
   event.preventDefault();
   if (event.target.dataset.type === 'delete') {
@@ -12,7 +11,7 @@ adminForm.addEventListener('click', async (event) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id
+        id,
       }),
     });
     if (response.ok) {
@@ -23,8 +22,7 @@ adminForm.addEventListener('click', async (event) => {
   }
   if (event.target.dataset.type === 'edit') {
     const oneadmin = event.target.closest('[data-userid]');
-    const { userid, status } = oneadmin.dataset
-
+    const { status, userid } = oneadmin.dataset;
     const response = await fetch(`${window.location.origin}/admin/${userid}/edit`, {
       method: 'PATCH',
       headers: {
@@ -32,13 +30,12 @@ adminForm.addEventListener('click', async (event) => {
       },
       body: JSON.stringify({ userid, status }),
     });
-    let data = await response.json();
+    const data = await response.json();
     if (response.status === 200) {
-      let button = document.getElementById(`${userid}`)
-      button.innerText = data.newStatus
+      const button = document.getElementById(`${userid}`);
+      button.innerText = data.newStatus;
     } else {
       alert('Ошибка');
     }
   }
 });
-
