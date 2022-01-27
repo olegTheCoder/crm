@@ -3,8 +3,12 @@
 This is a prototype of a CRM for a big furniture store in Moscow. Our client allowed us to provide this prototype in public, so here we are!
 
 It was deployed on Heroku: https://crmfurniture.herokuapp.com/users
+<br />
+<br />
 You can try app, using following signin pair:
+<br />
 login: admin
+<br />
 password: admin
 
 Stack we used: JS, Express, Bootstrap, PSQL, Sequelize.
